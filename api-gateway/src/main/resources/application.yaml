@@ -1,0 +1,27 @@
+server:
+  port: 8008
+
+spring:
+  application:
+    name: @project.name@
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: client-service
+        uri: lb://client-service
+        predicates:
+        - Path=/v1/clients/**
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+        - Path=/v1/order/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true

@@ -27,6 +27,7 @@
         <module>client-service</module>
         <module>order-service</module>
         <module>service-discovery</module>
+        <module>api-gateway</module>
     </modules>
 
     <dependencies>
