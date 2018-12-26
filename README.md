@@ -44,3 +44,21 @@ As this web application will be a worldwide success, it must be prepared to be f
 In other words, each micro-service will constantly reiceive a POST requests 
 (let's say 2/sec for client and 50/sec for order) and your web application will have a lots of users 
 active simultaneously (about ~1k).
+
+## Action Plan
+- [x] Created a discovery service 
+- [x] Created an API Gateway
+- [x] Use Feing to access user service data from order service
+- [ ] Implement the controller logic to the order details endpoint
+- [ ] Add ControllerAdvice or Exception Manager to error flows
+- [ ] Implement the repository (is it possible?) to allow multiple fields
+- [ ] Unit Test the whole thing
+- [ ] Initialize FE project
+- [ ] Create top filters component
+- [ ] Create table component
+- [ ] Create modal component
+- [ ] *Optional* - Integration tests
+- [ ] *Optional* - Cloud configuration
+
+## Solution arquitecture
+TODO
