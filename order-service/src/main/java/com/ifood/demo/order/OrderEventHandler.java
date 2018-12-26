@@ -11,18 +11,18 @@ import lombok.extern.slf4j.Slf4j;
 @RepositoryEventHandler(Order.class)
 public class OrderEventHandler {
 
-	@HandleAfterCreate
-	public void handleOrderCreate(Order c) {
-		log.info("handleOrderCreate: {}", c.getId());
-	}
+  @HandleAfterCreate
+  public void handleOrderCreate(Order c) {
+    log.info("handleOrderCreate: {}", c.getId());
+  }
 
-	@HandleAfterSave
-	public void handleOrderSave(Order c) {
-		log.info("handleOrderSave: {}", c.getId());
-	}
+  @HandleAfterSave
+  public void handleOrderSave(Order c) {
+    log.info("handleOrderSave: {}", c.getId());
+  }
 
-	@HandleAfterDelete
-	public void handleOrderDelete(Order c) {
-		log.info("handleOrderDelete: {}", c.getId());
-	}
+  @HandleAfterDelete
+  public void handleOrderDelete(Order c) {
+    log.info("handleOrderDelete: {}", c.getId());
+  }
 }
