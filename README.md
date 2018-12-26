@@ -49,6 +49,7 @@ active simultaneously (about ~1k).
 - [x] Created a discovery service 
 - [x] Created an API Gateway
 - [x] Use Feing to access user service data from order service
+- [ ] Add Circuit Breaker to the order details controller
 - [ ] Implement the controller logic to the order details endpoint
 - [ ] Add ControllerAdvice or Exception Manager to error flows
 - [ ] Implement the repository (is it possible?) to allow multiple fields
@@ -57,6 +58,7 @@ active simultaneously (about ~1k).
 - [ ] Create top filters component
 - [ ] Create table component
 - [ ] Create modal component
+- [ ] *Optional* - Add Swagger
 - [ ] *Optional* - Integration tests
 - [ ] *Optional* - Cloud configuration
 
