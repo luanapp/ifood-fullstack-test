@@ -1,4 +1,4 @@
-package com.ifood.demo.client;
+package com.ifood.demo.client.dto;
 
 import java.util.UUID;
 

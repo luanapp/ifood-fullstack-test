@@ -1,8 +1,8 @@
 package com.ifood.demo.order.controller;
 
-import com.ifood.demo.order.Client;
-import com.ifood.demo.order.OrderDetails;
-import com.ifood.demo.order.OrderRepository;
+import com.ifood.demo.order.dto.Client;
+import com.ifood.demo.order.dto.OrderDetails;
+import com.ifood.demo.order.repository.OrderRepository;
 import com.ifood.demo.order.client.ClientClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

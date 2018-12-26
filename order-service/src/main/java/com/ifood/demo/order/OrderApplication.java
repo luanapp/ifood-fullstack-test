@@ -1,6 +1,6 @@
-package com.ifood.demo;
+package com.ifood.demo.order;
 
-import com.ifood.demo.order.OrderEventHandler;
+import com.ifood.demo.order.repository.OrderEventHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;

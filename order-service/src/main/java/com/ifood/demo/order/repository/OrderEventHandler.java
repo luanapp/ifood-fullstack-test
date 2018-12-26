@@ -1,5 +1,6 @@
-package com.ifood.demo.order;
+package com.ifood.demo.order.repository;
 
+import com.ifood.demo.order.dto.Order;
 import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.HandleAfterDelete;
 import org.springframework.data.rest.core.annotation.HandleAfterSave;

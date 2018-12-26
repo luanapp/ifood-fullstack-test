@@ -1,4 +1,4 @@
-package com.ifood.demo;
+package com.ifood.demo.servicediscovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

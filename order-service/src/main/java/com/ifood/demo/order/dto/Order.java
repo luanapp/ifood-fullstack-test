@@ -1,4 +1,4 @@
-package com.ifood.demo.order;
+package com.ifood.demo.order.dto;
 
 import java.util.Date;
 import java.util.List;

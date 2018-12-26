@@ -1,6 +1,6 @@
-package com.ifood.demo;
+package com.ifood.demo.client;
 
-import com.ifood.demo.client.ClientEventHandler;
+import com.ifood.demo.client.repository.ClientEventHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;

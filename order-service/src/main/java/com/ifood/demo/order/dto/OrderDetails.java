@@ -1,4 +1,4 @@
-package com.ifood.demo.order;
+package com.ifood.demo.order.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

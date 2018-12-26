@@ -1,6 +1,6 @@
 package com.ifood.demo.order.client;
 
-import com.ifood.demo.order.Client;
+import com.ifood.demo.order.dto.Client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
