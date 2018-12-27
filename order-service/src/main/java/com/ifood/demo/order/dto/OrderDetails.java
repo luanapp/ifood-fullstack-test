@@ -1,18 +1,25 @@
 package com.ifood.demo.order.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
+import java.util.List;
 
 @Data
 @Document
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderDetails {
+  private final Date createdAt;
+  private final String name;
+  private final String email;
+  private final String phone;
+  private final List<Order.Item> items;
 
-  private Order order;
-  private Client client;
+  protected OrderDetails() {
+    this(null, null, null, null, null);
+  }
 }

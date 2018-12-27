@@ -18,4 +18,8 @@ public class Client {
   private final String name;
   private final String email;
   private final String phone;
+
+  protected Client() {
+    this(null, null, null);
+  }
 }
