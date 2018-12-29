@@ -1,7 +1,7 @@
 package com.ifood.demo.client.repository;
 
-import com.ifood.demo.client.dto.Client;
-import com.ifood.demo.client.dto.QClient;
+import com.ifood.demo.client.document.Client;
+import com.ifood.demo.client.document.QClient;
 import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.core.types.dsl.StringPath;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
@@ -22,12 +22,6 @@ public interface ClientRepository
 
   @RestResource(path = "byName")
   Collection<Client> findByNameIgnoreCaseContaining(@Param("name") String name);
-
-  @RestResource(path = "byPhone")
-  Collection<Client> findByPhoneIgnoreCaseContaining(@Param("phone") String phone);
-
-  @RestResource(path = "byEmail")
-  Collection<Client> findByEmailIgnoreCaseContaining(@Param("email") String email);
 
   @Override
   default public void customize(QuerydslBindings bindings, QClient client) {

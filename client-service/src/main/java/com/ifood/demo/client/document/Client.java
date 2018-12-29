@@ -1,5 +1,7 @@
-package com.ifood.demo.client.dto;
+package com.ifood.demo.client.document;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -11,6 +13,8 @@ import javax.persistence.Id;
 
 @Entity
 @Data
+@AllArgsConstructor
+@Builder
 @RequiredArgsConstructor
 public class Client {
 
