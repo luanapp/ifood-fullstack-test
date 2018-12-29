@@ -76,7 +76,7 @@ public class ClientControllerTest {
       return clients;
     });
 
-    mvc.perform(get("/v1/clients/")
+    mvc.perform(get("/v1/clients/query")
         .accept(MediaType.APPLICATION_JSON)
         .param("name", CLIENT1_NAME)
         .param("email", CLIENT1_EMAIL)
