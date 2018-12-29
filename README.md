@@ -50,9 +50,9 @@ active simultaneously (about ~1k).
 - [x] Created an API Gateway
 - [x] Use Feing to access user service data from order service
 - [ ] Add Circuit Breaker to the order details controller
-- [ ] Implement the controller logic to the order details endpoint
-- [ ] Add ControllerAdvice or Exception Manager to error flows
-- [ ] Implement the repository (is it possible?) to allow multiple fields
+- [x] Implement the controller logic to the order details endpoint
+- [x] Add ControllerAdvice or Exception Manager to error flows
+- [x] Implement the repository to allow queriable search
 - [ ] Unit Test the whole thing
 - [ ] Initialize FE project
 - [ ] Create top filters component
