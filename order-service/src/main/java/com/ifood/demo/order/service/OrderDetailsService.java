@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderDetailsService {
@@ -36,18 +37,25 @@ public class OrderDetailsService {
     Date start = Date.from(Instant.parse(startDate));
     Date end = Date.from(Instant.parse(endDate));
 
-    //TODO filter by the client search criteria
+    Collection<Client> clients =
+        clientClient.findAllFiltered(clientName, email, phone).getContent();
+
     Collection<Order> orders =
         orderRepository.findByCreatedAtBetween(start, end);
     for (Order order : orders) {
-      Client client = clientClient.getById(order.getClientId().toString());
-      detailsList.add(OrderDetails.builder()
-          .createdAt(order.getCreatedAt())
-          .name(client.getName())
-          .email(client.getEmail())
-          .phone(client.getPhone())
-          .items(order.getItems())
-          .build());
+      Optional<Client> client = clients.stream()
+          .filter(cli -> cli.getId().equals(order.getClientId()))
+          .findFirst();
+
+      if (client.isPresent()) {
+        detailsList.add(OrderDetails.builder()
+            .createdAt(order.getCreatedAt())
+            .name(client.get().getName())
+            .email(client.get().getEmail())
+            .phone(client.get().getPhone())
+            .items(order.getItems())
+            .build());
+      }
     }
 
     return detailsList;

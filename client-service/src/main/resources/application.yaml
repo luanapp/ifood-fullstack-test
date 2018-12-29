@@ -1,6 +1,6 @@
 spring:
   application:
-    name: @project.name@
+    name: client-service # @project.name@ is failing because it can...
   data:
       rest:
         base-path: /v1
