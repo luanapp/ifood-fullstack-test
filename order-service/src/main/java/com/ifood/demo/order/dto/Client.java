@@ -1,5 +1,7 @@
 package com.ifood.demo.order.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -9,12 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
 @Data
+@Builder
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class Client {
 
-  private @Id @GeneratedValue UUID id;
+  private UUID id;
   private final String name;
   private final String email;
   private final String phone;

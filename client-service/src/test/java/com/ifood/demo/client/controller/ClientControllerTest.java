@@ -1,6 +1,7 @@
 package com.ifood.demo.client.controller;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -12,7 +13,6 @@ import com.ifood.demo.client.ClientApplication;
 import com.ifood.demo.client.document.Client;
 import com.ifood.demo.client.repository.ClientRepository;
 import com.querydsl.core.types.Predicate;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +44,7 @@ public class ClientControllerTest {
 
   @Autowired private QuerydslPredicateArgumentResolver querydslPredicateArgumentResolver;
 
-  MockMvc mvc;
+  private MockMvc mvc;
 
   @InjectMocks private ClientController clientController;
 
@@ -83,9 +83,9 @@ public class ClientControllerTest {
         .param("phone", CLIENT1_PHONE))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$", hasSize(1)))
-        .andExpect(jsonPath("$[0].name", Matchers.is(CLIENT1_NAME)))
-        .andExpect(jsonPath("$[0].email", Matchers.is(CLIENT1_EMAIL)))
-        .andExpect(jsonPath("$[0].phone", Matchers.is(CLIENT1_PHONE)))
+        .andExpect(jsonPath("$[0].name", is(CLIENT1_NAME)))
+        .andExpect(jsonPath("$[0].email", is(CLIENT1_EMAIL)))
+        .andExpect(jsonPath("$[0].phone", is(CLIENT1_PHONE)))
         .andReturn();
   }
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/v1/clients")
 public class ClientController {
 
-  @Autowired ClientRepository clientRepository;
+  @Autowired private ClientRepository clientRepository;
 
 
   // Just for unit testing purposes. This will be mapped to /v1/clients by spring rest data

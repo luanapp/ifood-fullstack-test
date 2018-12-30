@@ -1,5 +1,7 @@
-package com.ifood.demo.order.dto;
+package com.ifood.demo.order.document;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,6 +14,8 @@ import javax.persistence.Id;
 
 @Document
 @Data
+@Builder
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class Order {
 
@@ -28,6 +32,7 @@ public class Order {
 
 
   @Data
+  @Builder
   @RequiredArgsConstructor
   public static class Item {
 

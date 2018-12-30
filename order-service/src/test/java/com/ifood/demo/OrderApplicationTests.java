@@ -4,21 +4,22 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
+import com.ifood.demo.order.OrderApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ifood.demo.order.dto.Order;
-import com.ifood.demo.order.dto.Order.Item;
+import com.ifood.demo.order.document.Order;
+import com.ifood.demo.order.document.Order.Item;
 import com.ifood.demo.order.repository.OrderRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = OrderApplication.class)
 public class OrderApplicationTests {
 
 	@Autowired OrderRepository orderRepository;

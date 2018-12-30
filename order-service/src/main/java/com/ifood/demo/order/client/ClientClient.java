@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ClientClient {
 
   @GetMapping(path = "/")
-  public Resources<Client> findAllFiltered(@RequestParam("name") String name,
+  Resources<Client> findAllFiltered(@RequestParam("name") String name,
       @RequestParam("email") String email, @RequestParam("phone") String phone);
 }

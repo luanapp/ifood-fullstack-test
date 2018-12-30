@@ -1,5 +1,6 @@
 package com.ifood.demo.order.controller;
 
+import com.ifood.demo.order.exception.ClientNotFoundException;
 import org.springframework.hateoas.VndErrors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,11 @@ import java.util.Optional;
 @ControllerAdvice(assignableTypes = OrderDetailsController.class)
 @RequestMapping(produces = "application/vnd.error+json")
 public class OrderDetailsControllerAdvice {
+
+  @ExceptionHandler(ClientNotFoundException.class)
+  public ResponseEntity<VndErrors> clientNotFound(Exception e) {
+    return error(e, HttpStatus.NOT_FOUND, String.valueOf(e.getMessage()));
+  }
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<VndErrors> defaultHandler(Exception e) {

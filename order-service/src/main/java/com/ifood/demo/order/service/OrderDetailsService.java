@@ -1,9 +1,11 @@
 package com.ifood.demo.order.service;
 
 import com.ifood.demo.order.client.ClientClient;
+import com.ifood.demo.order.document.Order;
 import com.ifood.demo.order.dto.Client;
-import com.ifood.demo.order.dto.Order;
 import com.ifood.demo.order.dto.OrderDetails;
+import com.ifood.demo.order.exception.ClientNotFoundException;
+import com.ifood.demo.order.exception.ServiceException;
 import com.ifood.demo.order.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +33,7 @@ public class OrderDetailsService {
    * @return order details list matching the criteria
    */
   public List<OrderDetails> getOrderDetails(String startDate, String endDate, String clientName,
-      String phone, String email) {
+      String phone, String email) throws ServiceException {
     List<OrderDetails> detailsList = new ArrayList<>();
 
     Date start = Date.from(Instant.parse(startDate));
@@ -55,6 +57,8 @@ public class OrderDetailsService {
             .phone(client.get().getPhone())
             .items(order.getItems())
             .build());
+      } else {
+        throw new ClientNotFoundException(order.getClientId());
       }
     }
 

@@ -1,15 +1,16 @@
 package com.ifood.demo.order.dto;
 
+import com.ifood.demo.order.document.Order;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Document
+@Setter
 @Builder
 @RequiredArgsConstructor
 public class OrderDetails {
