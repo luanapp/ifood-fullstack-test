@@ -53,7 +53,7 @@ active simultaneously (about ~1k).
 - [x] Implement the controller logic to the order details endpoint
 - [x] Add ControllerAdvice or Exception Manager to error flows
 - [x] Implement the repository to allow queriable search
-- [ ] Unit Test the whole thing
+- [x] Unit Test the whole thing
 - [ ] Initialize FE project
 - [ ] Create top filters component
 - [ ] Create table component
