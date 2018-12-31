@@ -7,6 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import * as moment from "moment";
+import * as actions from "../actions/orderDetails";
 
 class OrderSearchResults extends React.Component {
 
@@ -20,45 +21,50 @@ class OrderSearchResults extends React.Component {
     componentWillReceiveProps(nextProps) {
         const { orders } = nextProps;
         this.setState({
-            orders 
+            orders
         });
+    }
+
+    openDetailsDialog(index) {
+        const { fetchOrderItems, toggleItemsModal } = this.props;
+        const { orders } = this.state;
+        toggleItemsModal();
+        fetchOrderItems(orders[index].items);
     }
 
     render() {
         const { orders } = this.state;
         return (
-            <Paper className="search-results">
-                <Table padding="dense">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center">Date</TableCell>
-                            <TableCell align="center">Client Name</TableCell>
-                            <TableCell align="center">Phone</TableCell>
-                            <TableCell align="center">E-mail</TableCell>
-                            <TableCell align="center">Total</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {orders.map((row, index) => {
-                            const total = row.items.reduce((acc, curr) => {
-                                const qty = parseFloat(curr.quantity);
-                                const price = parseFloat(curr.price);
-                                acc = parseFloat(acc);
-                                return acc + (qty * price);
-                            }, 0.0);
-                            return (
-                                <TableRow key={index}>
-                                    <TableCell align="center">{moment(row.createdAt).format('MM-DD-YYYY')}</TableCell>
-                                    <TableCell align="center">{row.name}</TableCell>
-                                    <TableCell align="center">{row.phone}</TableCell>
-                                    <TableCell align="center">{row.email}</TableCell>
-                                    <TableCell align="right">R$ {total.toFixed(2)}</TableCell>
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-            </Paper>
+            <Table className="search-results" padding="dense">
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="center">Date</TableCell>
+                        <TableCell align="center">Client Name</TableCell>
+                        <TableCell align="center">Phone</TableCell>
+                        <TableCell align="center">E-mail</TableCell>
+                        <TableCell align="center">Total</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {orders.map((row, index) => {
+                        const total = row.items.reduce((acc, curr) => {
+                            const qty = parseFloat(curr.quantity);
+                            const price = parseFloat(curr.price);
+                            acc = parseFloat(acc);
+                            return acc + (qty * price);
+                        }, 0.0);
+                        return (
+                            <TableRow key={index} onClick={() => this.openDetailsDialog(index)} >
+                                <TableCell align="center" >{moment(row.createdAt).format('MM-DD-YYYY')}</TableCell>
+                                <TableCell align="center">{row.name}</TableCell>
+                                <TableCell align="center">{row.phone}</TableCell>
+                                <TableCell align="center">{row.email}</TableCell>
+                                <TableCell align="right">R$ {total.toFixed(2)}</TableCell>
+                            </TableRow>
+                        );
+                    })}
+                </TableBody>
+            </Table>
         )
     }
 }
@@ -69,4 +75,11 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(OrderSearchResults);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleItemsModal: () => dispatch(actions.toggleItemsModal()),
+        fetchOrderItems: (items) => dispatch(actions.fetchOrderItems(items))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderSearchResults);

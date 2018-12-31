@@ -9,34 +9,35 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { connect } from "react-redux";
+import * as actions from "../actions/orderDetails";
 
-const rows = [
-    {
-        description: "",
-        quantity: 0,
-        price: 0.0,
-        total: 0.0,
-    }
-]
-
-export default class OrderItemsModal extends React.Component {
+class OrderItemsModal extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            open: false,
-            fullWidth: true,
-            maxWidth: "sm",
+            items: []
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { items } = nextProps;
+        this.setState({
+            items
+        });
+    }
+
     handleClose() {
-        this.setState({ open: false })
+        const { toggleItemsModal, open } = this.props;
+        toggleItemsModal(open);
     }
 
     render() {
+        const { open } = this.props;
+        const { items } = this.state;
         return (
-            <Dialog className="items-dialog" maxWidth="md" open={this.state.open} onClose={this.handleClose}>
+            <Dialog className="items-dialog" maxWidth="md" open={open} onClose={this.handleClose.bind(this)}>
                 <DialogTitle id="dialog-title">Order Details</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -51,13 +52,14 @@ export default class OrderItemsModal extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {rows.map((row, index) => {
+                                    {items.map((item, index) => {
+                                        const total = parseFloat(item.quantity) * parseFloat(item.price);
                                         return (
                                             <TableRow key={index}>
-                                                <TableCell align="center">{row.description}</TableCell>
-                                                <TableCell align="center">{row.quantity}</TableCell>
-                                                <TableCell align="center">{row.price}</TableCell>
-                                                <TableCell align="right">{row.total}</TableCell>
+                                                <TableCell align="center">{item.description}</TableCell>
+                                                <TableCell align="center">{item.quantity}</TableCell>
+                                                <TableCell align="center">R$ {parseFloat(item.price).toFixed(2)}</TableCell>
+                                                <TableCell align="right">R$ {total.toFixed(2)}</TableCell>
                                             </TableRow>
                                         );
                                     })}
@@ -70,3 +72,18 @@ export default class OrderItemsModal extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        open: state.orderDetails.open,
+        items: state.orderDetails.items
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleItemsModal: (open) => dispatch(actions.toggleItemsModal(open))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderItemsModal);

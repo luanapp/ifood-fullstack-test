@@ -40,3 +40,20 @@ export const errorOrderDetails = (error) => {
         });
     };
 };
+
+export const toggleItemsModal = (open) => {
+    return dispatch => {
+        dispatch({
+            type: types.TOGGLE_ORDER_ITEMS
+        });
+    };
+};
+
+export const fetchOrderItems = (items) => {
+    return dispatch => {
+        dispatch({
+            type: types.FETCH_ORDER_ITEMS,
+            items
+        });
+    };
+};
