@@ -9,26 +9,25 @@ class OrderSearch extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            startDate: "2018-01-01",
-            endDate: "2018-02-01",
-            name: "",
-            phone: "",
-            email: "",
-        }
-    }
-
-    transformOrderParams() {
-        let data = this.state;
-        data.startDate = (new Date(data.startDate)).toISOString();
-        data.endDate = (new Date(data.endDate)).toISOString();
-        return data;
+        this.startDate = React.createRef();
+        this.endDate = React.createRef();
+        this.name = React.createRef();
+        this.phone = React.createRef();
+        this.email = React.createRef();
     }
 
     search() {
         const { fetchOrderDetails } = this.props;
-        fetchOrderDetails(this.transformOrderParams(this.state));
+        console.log(this.startDate.value);
+        let searchParams = {
+            startDate: (new Date(this.startDate.value)).toISOString(),
+            endDate: (new Date(this.endDate.value)).toISOString(),
+            name: this.name.value,
+            phone: this.phone.value,
+            email: this.email.value,
+        };
+
+        fetchOrderDetails(searchParams);
     }
 
     render() {
@@ -36,11 +35,11 @@ class OrderSearch extends React.Component {
             <div className="search">
                 <div className="search-fields">
                     <Paper>
-                        <TextField id="startDate" type="date" margin="dense" label="Start aaaaDate" value={this.state.startDate} />
-                        <TextField id="endDate" type="date" margin="dense" label="End Date" value={this.state.endDate} />
-                        <TextField id="clientName" type="text" margin="dense" label="Client Name" value={this.state.name} />
-                        <TextField id="phone" type="text" margin="dense" label="Phone" value={this.state.phone} />
-                        <TextField id="email" type="text" margin="dense" label="E-mail" value={this.state.email} />
+                        <TextField name="startDate" type="date" margin="dense" label="Start Date" inputRef={e => this.startDate = e} />
+                        <TextField name="endDate" type="date" margin="dense" label="End Date" inputRef={e => this.endDate = e} />
+                        <TextField name="name"   type="text" margin="dense" label="Client Name" inputRef={e => this.name = e} />
+                        <TextField name="phone" type="text" margin="dense" label="Phone" inputRef={e => this.phone = e} />
+                        <TextField name="email" type="text" margin="dense" label="E-mail" inputRef={e => this.email = e} />
                     </Paper>
                 </div>
                 <div className="search-submit">
