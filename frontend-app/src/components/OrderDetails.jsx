@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import OrderSearch from "./OrderSearch.jsx";
 import OrderSearchResults from "./OrderSearchResults.jsx";
 import OrderItemsModal from "./OrderItemsModal.jsx";
+import './style/main.scss';
 
 export default class OrderDetails extends React.Component {
     render() {

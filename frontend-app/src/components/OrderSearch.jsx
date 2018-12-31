@@ -31,14 +31,14 @@ class OrderSearch extends React.Component {
 
     render() {
         return (
-            <div className="search">
+            <div className="order-search">
                 <div className="search-fields">
-                    <Paper>
-                        <TextField name="startDate" type="date" margin="dense" label="Start Date" inputRef={e => this.startDate = e} />
-                        <TextField name="endDate" type="date" margin="dense" label="End Date" inputRef={e => this.endDate = e} />
-                        <TextField name="name"   type="text" margin="dense" label="Client Name" inputRef={e => this.name = e} />
-                        <TextField name="phone" type="text" margin="dense" label="Phone" inputRef={e => this.phone = e} />
-                        <TextField name="email" type="text" margin="dense" label="E-mail" inputRef={e => this.email = e} />
+                    <Paper className="page">
+                        <TextField className="field" name="startDate" type="date" margin="dense" label="Start Date" inputRef={e => this.startDate = e} />
+                        <TextField className="field" name="endDate" type="date" margin="dense" label="End Date" inputRef={e => this.endDate = e} />
+                        <TextField className="field" name="name"   type="text" margin="dense" label="Client Name" inputRef={e => this.name = e} />
+                        <TextField className="field" name="phone" type="text" margin="dense" label="Phone" inputRef={e => this.phone = e} />
+                        <TextField className="field" name="email" type="text" margin="dense" label="E-mail" inputRef={e => this.email = e} />
                     </Paper>
                 </div>
                 <div className="search-submit">
