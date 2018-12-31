@@ -63,4 +63,16 @@ active simultaneously (about ~1k).
 - [ ] *Optional* - Cloud configuration
 
 ## Solution arquitecture
-TODO
+The arquitecture marked as a _?_ is divided into 3 parts:
+1. An Api Gateway
+2. Service discovery
+3. Frontend application
+
+### Service discovery (Eureka)
+It allows several instances of any microservice to be managed use a common address. It will allow load balancing a service
+
+### Api Gateway
+It provides a unique entry point for the microservices. It routes all the incoming requests comming from the Frontend App to the corresponding services
+
+### Frontend Application
+Was implemented using React with Redux and redux-thunk as a middleware. The UI was enhanced using material-ui and Sass
