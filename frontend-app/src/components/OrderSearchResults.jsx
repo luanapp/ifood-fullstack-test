@@ -1,22 +1,35 @@
-import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import React from "react";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import { connect } from "react-redux";
 
 const rows = [
     {
-        createdDate: '',
-        clientName: '',
-        phone: '',
-        email: '',
+        createdDate: "",
+        clientName: "",
+        phone: "",
+        email: "",
         total: 0.0,
     }
 ]
 
-export default class OrderSearchResults extends React.Component {
+class OrderSearchResults extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            orders: []
+        }
+    }
+
+    componentDidMount() {
+        console.log(this.props);
+    }
+
     render() {
         return (
             <Paper className="search-results">
@@ -31,9 +44,9 @@ export default class OrderSearchResults extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map(row => {
+                        {rows.map((row, index) => {
                             return (
-                                <TableRow>
+                                <TableRow key={index}>
                                     <TableCell align="center">{row.createdDate}</TableCell>
                                     <TableCell align="center">{row.clientName}</TableCell>
                                     <TableCell align="center">{row.phone}</TableCell>
@@ -48,3 +61,11 @@ export default class OrderSearchResults extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        orders: state.orderDetails.orders
+    };
+};
+
+export default connect(mapStateToProps)(OrderSearchResults);

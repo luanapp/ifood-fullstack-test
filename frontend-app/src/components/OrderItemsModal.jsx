@@ -1,18 +1,18 @@
-import React from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import React from "react";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 const rows = [
     {
-        description: '',
+        description: "",
         quantity: 0,
         price: 0.0,
         total: 0.0,
@@ -20,17 +20,17 @@ const rows = [
 ]
 
 export default class OrderItemsModal extends React.Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
             open: false,
             fullWidth: true,
-            maxWidth: 'sm',
-        };    
+            maxWidth: "sm",
+        };
     }
 
-    handleClose = () => {
+    handleClose() {
         this.setState({ open: false })
     }
 
@@ -51,9 +51,9 @@ export default class OrderItemsModal extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {rows.map(row => {
+                                    {rows.map((row, index) => {
                                         return (
-                                            <TableRow>
+                                            <TableRow key={index}>
                                                 <TableCell align="center">{row.description}</TableCell>
                                                 <TableCell align="center">{row.quantity}</TableCell>
                                                 <TableCell align="center">{row.price}</TableCell>

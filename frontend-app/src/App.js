@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import Header from './routes/Header';
-import Main from './routes/Main';
-import './App.css';
+import React, { Component } from "react";
+import Header from "./routes/Header.jsx";
+import Main from "./routes/Main.jsx";
 
 class App extends Component {
   render() {

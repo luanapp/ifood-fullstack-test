@@ -1,8 +1,8 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import OrderSearch from './OrderSearch';
-import OrderSearchResults from './OrderSearchResults';
-import OrderItemsModal from './OrderItemsModal';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import OrderSearch from "./OrderSearch.jsx";
+import OrderSearchResults from "./OrderSearchResults.jsx";
+import OrderItemsModal from "./OrderItemsModal.jsx";
 
 export default class OrderDetails extends React.Component {
     render() {

@@ -1,11 +1,14 @@
-import initialState from './initialState';
 import {
     FETCH_ORDER_DETAILS,
     RECEIVE_ORDER_DETAILS,
     FAIL_ORDER_DETAILS
-} from '../actions/actionTypes';
+} from "../actions/actionTypes";
 
-export default (state = initialState.orderDetails, action) => {
+const initialState = {
+    orders: [],
+};
+
+export default (state = initialState, action) => {
     let newState = {};
 
     switch (action.type) {
@@ -14,7 +17,7 @@ export default (state = initialState.orderDetails, action) => {
             return Object.assign({}, state, newState);
 
         case RECEIVE_ORDER_DETAILS:
-            newState.orderDetails = action.orderDetails;
+            newState.orders = action.orders;
             return Object.assign({}, state, newState);
 
         case FAIL_ORDER_DETAILS:
