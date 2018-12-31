@@ -9,9 +9,10 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RepositoryRestController
-@RequestMapping("/v1/clients")
+@RequestMapping("/clients")
 public class ClientController {
 
   @Autowired private ClientRepository clientRepository;

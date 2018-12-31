@@ -6,6 +6,7 @@ import com.ifood.demo.order.service.OrderDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ public class OrderDetailsController {
 
   @Autowired private OrderDetailsService orderDetailsService;
 
+  @CrossOrigin(origins = "http://localhost:3000")
   @GetMapping(path = "/details")
   public ResponseEntity<List<OrderDetails>> getOrderDetails(
       @RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate,
