@@ -4,7 +4,6 @@ import com.ifood.demo.order.client.ClientClient;
 import com.ifood.demo.order.document.Order;
 import com.ifood.demo.order.dto.Client;
 import com.ifood.demo.order.dto.OrderDetails;
-import com.ifood.demo.order.exception.ClientNotFoundException;
 import com.ifood.demo.order.exception.ServiceException;
 import com.ifood.demo.order.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +56,6 @@ public class OrderDetailsService {
             .phone(client.get().getPhone())
             .items(order.getItems())
             .build());
-      } else {
-        throw new ClientNotFoundException(order.getClientId());
       }
     }
 

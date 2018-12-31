@@ -18,6 +18,12 @@ spring:
         uri: lb://order-service
         predicates:
         - Path=/v1/orders/**
+        globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+            - GET
 
 eureka:
   client:
