@@ -17,7 +17,7 @@ export const receiveOrderDetails = (data) => {
 
 export const fetchOrderDetails = (searchParams) => {
     return dispatch => {
-        const url = buildUrl("http://localhost:8082/v1/orders/details", searchParams);
+        const url = buildUrl("http://localhost:8008/v1/orders/details", searchParams);
         return fetch(url, {
             method: "GET",
             mode: "cors",
