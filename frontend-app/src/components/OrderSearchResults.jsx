@@ -6,16 +6,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
-
-const rows = [
-    {
-        createdDate: "",
-        clientName: "",
-        phone: "",
-        email: "",
-        total: 0.0,
-    }
-]
+import * as moment from "moment";
 
 class OrderSearchResults extends React.Component {
 
@@ -26,11 +17,15 @@ class OrderSearchResults extends React.Component {
         }
     }
 
-    componentDidMount() {
-        console.log(this.props);
+    componentWillReceiveProps(nextProps) {
+        const { orders } = nextProps;
+        this.setState({
+            orders 
+        });
     }
 
     render() {
+        const { orders } = this.state;
         return (
             <Paper className="search-results">
                 <Table padding="dense">
@@ -44,14 +39,20 @@ class OrderSearchResults extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => {
+                        {orders.map((row, index) => {
+                            const total = row.items.reduce((acc, curr) => {
+                                const qty = parseFloat(curr.quantity);
+                                const price = parseFloat(curr.price);
+                                acc = parseFloat(acc);
+                                return acc + (qty * price);
+                            }, 0.0);
                             return (
                                 <TableRow key={index}>
-                                    <TableCell align="center">{row.createdDate}</TableCell>
-                                    <TableCell align="center">{row.clientName}</TableCell>
+                                    <TableCell align="center">{moment(row.createdAt).format('MM-DD-YYYY')}</TableCell>
+                                    <TableCell align="center">{row.name}</TableCell>
                                     <TableCell align="center">{row.phone}</TableCell>
                                     <TableCell align="center">{row.email}</TableCell>
-                                    <TableCell align="right">{row.total}</TableCell>
+                                    <TableCell align="right">R$ {total.toFixed(2)}</TableCell>
                                 </TableRow>
                             );
                         })}

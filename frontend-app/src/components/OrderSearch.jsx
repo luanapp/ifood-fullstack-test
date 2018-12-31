@@ -18,7 +18,6 @@ class OrderSearch extends React.Component {
 
     search() {
         const { fetchOrderDetails } = this.props;
-        console.log(this.startDate.value);
         let searchParams = {
             startDate: (new Date(this.startDate.value)).toISOString(),
             endDate: (new Date(this.endDate.value)).toISOString(),
