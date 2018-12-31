@@ -54,10 +54,10 @@ active simultaneously (about ~1k).
 - [x] Add ControllerAdvice or Exception Manager to error flows
 - [x] Implement the repository to allow queriable search
 - [x] Unit Test the whole thing
-- [ ] Initialize FE project
-- [ ] Create top filters component
-- [ ] Create table component
-- [ ] Create modal component
+- [x] Initialize FE project
+- [x] Create top filters component
+- [x] Create table component
+- [x] Create modal component
 - [ ] *Optional* - Add Swagger
 - [ ] *Optional* - Integration tests
 - [ ] *Optional* - Cloud configuration
