@@ -1,10 +1,10 @@
 import {
-    FETCH_ORDER_DETAILS,
-    RECEIVE_ORDER_DETAILS,
-    FAIL_ORDER_DETAILS,
-    TOGGLE_ORDER_ITEMS,
-    FETCH_ORDER_ITEMS
-} from "../actions/actionTypes";
+    ORDER_DETAILS_FETCH,
+    ORDER_DETAILS_SUCCESS,
+    ORDER_DETAILS_ERROR,
+    ORDER_ITEMS_MODAL_TOGGLE,
+    ORDER_ITEMS_SUCCESS
+} from "../constants/actionTypes";
 
 const initialState = {
     orders: [],
@@ -15,23 +15,23 @@ export default (state = initialState, action) => {
     let newState = {};
 
     switch (action.type) {
-        case FETCH_ORDER_DETAILS:
-            newState.searchParams = action.searchParams;
+        case ORDER_DETAILS_FETCH:
+            newState.searchParams = action.searchParams; //this shouldn't be working
             return Object.assign({}, state, newState);
 
-        case RECEIVE_ORDER_DETAILS:
+        case ORDER_DETAILS_SUCCESS:
             newState.orders = action.orders;
             return Object.assign({}, state, newState);
 
-        case FAIL_ORDER_DETAILS:
+        case ORDER_DETAILS_ERROR:
             newState.error = action.error;
             return Object.assign({}, state, newState);
 
-        case TOGGLE_ORDER_ITEMS:
+        case ORDER_ITEMS_MODAL_TOGGLE:
             newState.open = !state.open;
             return Object.assign({}, state, newState);
 
-        case FETCH_ORDER_ITEMS:
+        case ORDER_ITEMS_SUCCESS:
             newState.items = action.items;
             return Object.assign({}, state, newState);
 

@@ -1,23 +1,17 @@
-import * as types from "./actionTypes";
-
-const buildUrl = (urlStr, params) => {
-    let url = new URL(urlStr);
-    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-    return url;
-}
+import * as types from "../constants/actionTypes";
+import * as urls from "../constants/urls";
+import { buildUrl } from "../utils/urlUtils";
 
 export const receiveOrderDetails = (data) => {
-    return dispatch => {
-        dispatch({
-            type: types.RECEIVE_ORDER_DETAILS,
-            orders: data
-        });
+    return {
+        type: types.ORDER_DETAILS_SUCCESS,
+        orders: data
     };
 };
 
 export const fetchOrderDetails = (searchParams) => {
     return dispatch => {
-        const url = buildUrl("http://localhost:8008/v1/orders/details", searchParams);
+        const url = buildUrl("/v1/orders/details", urls.API_GW_URL, searchParams);
         return fetch(url, {
             method: "GET",
             mode: "cors",
@@ -33,27 +27,21 @@ export const fetchOrderDetails = (searchParams) => {
 };
 
 export const errorOrderDetails = (error) => {
-    return dispatch => {
-        dispatch({
-            type: types.FAIL_ORDER_DETAILS,
-            error
-        });
+    return {
+        type: types.ORDER_DETAILS_ERROR,
+        error
     };
 };
 
 export const toggleItemsModal = (open) => {
-    return dispatch => {
-        dispatch({
-            type: types.TOGGLE_ORDER_ITEMS
-        });
+    return {
+        type: types.ORDER_ITEMS_MODAL_TOGGLE
     };
 };
 
 export const fetchOrderItems = (items) => {
-    return dispatch => {
-        dispatch({
-            type: types.FETCH_ORDER_ITEMS,
-            items
-        });
+    return {
+        type: types.ORDER_ITEMS_SUCCESS,
+        items
     };
 };
