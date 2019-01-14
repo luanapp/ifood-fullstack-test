@@ -4,12 +4,11 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import * as moment from "moment";
 import * as actions from "../actions/orderDetails";
 
-class OrderSearchResults extends React.Component {
+export class OrderSearchResults extends React.Component {
 
     constructor(props) {
         super(props);

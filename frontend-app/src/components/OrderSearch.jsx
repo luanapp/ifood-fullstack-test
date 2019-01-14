@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import * as actions from "../actions/orderDetails";
 
-class OrderSearch extends React.Component {
+export class OrderSearch extends React.Component {
 
     constructor(props) {
         super(props);

@@ -12,7 +12,7 @@ import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import * as actions from "../actions/orderDetails";
 
-class OrderItemsModal extends React.Component {
+export class OrderItemsModal extends React.Component {
 
     constructor(props) {
         super(props);
