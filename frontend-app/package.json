@@ -23,6 +23,8 @@
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "fetch-mock": "^7.3.0",
     "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
@@ -44,6 +46,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
   "browserslist": [
     ">0.2%",
