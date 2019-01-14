@@ -3,7 +3,7 @@ import {
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_ERROR,
     ORDER_ITEMS_MODAL_TOGGLE,
-    ORDER_ITEMS_SUCCESS
+    ORDER_ITEMS_FETCH
 } from "../constants/actionTypes";
 
 const initialState = {
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
             newState.open = !state.open;
             return Object.assign({}, state, newState);
 
-        case ORDER_ITEMS_SUCCESS:
+        case ORDER_ITEMS_FETCH:
             newState.items = action.items;
             return Object.assign({}, state, newState);
 

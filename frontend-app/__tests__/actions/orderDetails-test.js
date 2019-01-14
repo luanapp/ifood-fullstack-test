@@ -57,5 +57,24 @@ describe("Test Order Details actions", () => {
         });
     });
 
+    it("should dispatch to ORDER_ITEMS_MODAL_TOGGLE", () => {
+        const expectedActions = [
+            { type: actionsTypes.ORDER_ITEMS_MODAL_TOGGLE }
+        ];
+
+        store.dispatch(actions.toggleItemsModal(true));
+        expect(store.getActions()).toEqual(expectedActions);
+    });
+
+    it("should dispatch to ORDER_ITEMS_FETCH", () => {
+        const items = [order];
+        const expectedActions = [
+            { type: actionsTypes.ORDER_ITEMS_FETCH, items },
+        ];
+
+        store.dispatch(actions.fetchOrderItems(items));
+        expect(store.getActions()).toEqual(expectedActions);
+    });
+
 
 });

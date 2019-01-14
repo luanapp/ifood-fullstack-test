@@ -41,7 +41,7 @@ export const toggleItemsModal = (open) => {
 
 export const fetchOrderItems = (items) => {
     return {
-        type: types.ORDER_ITEMS_SUCCESS,
+        type: types.ORDER_ITEMS_FETCH,
         items
     };
 };
