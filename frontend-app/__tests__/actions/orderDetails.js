@@ -5,19 +5,11 @@ import * as actions from "../../src/actions/orderDetails";
 import * as actionsTypes from "../../src/constants/actionTypes";
 import * as urls from "../../src/constants/urls";
 import { buildUrl } from "../../src/utils/urlUtils";
+import { orders, searchParams, error } from "../../__mocks__/objectMocks";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const store = mockStore();
-
-const searchParams = {
-    startDate: (new Date()).toISOString(),
-    endDate: (new Date()).toISOString(),
-    name: "Name",
-    phone: "Phone",
-    email: "Email",
-}
-const order = { name: searchParams.name, phone: searchParams.phone, email: searchParams.email };
 
 describe("Test Order Details actions", () => {
     afterEach(() => {
@@ -30,11 +22,11 @@ describe("Test Order Details actions", () => {
 
     it("should dispatch to ORDER_DETAILS_SUCCESS after fetch success", () => {
         const expectedActions = [
-            { type: actionsTypes.ORDER_DETAILS_SUCCESS, orders: [order] }
+            { type: actionsTypes.ORDER_DETAILS_SUCCESS, orders: orders }
         ];
 
         const url = buildUrl("/v1/orders/details", urls.API_GW_URL, searchParams);
-        fetchMock.getOnce(url.toString(), [order]);
+        fetchMock.getOnce(url.toString(), orders);
 
         store.dispatch(actions.fetchOrderDetails(searchParams)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
@@ -42,7 +34,6 @@ describe("Test Order Details actions", () => {
     });
 
     it("should dispatch to ORDER_DETAILS_ERROR after fetch error", () => {
-        const error = new Error("Error message");
         const expectedActions = [
             { type: actionsTypes.ORDER_DETAILS_ERROR, error }
         ];
@@ -67,7 +58,7 @@ describe("Test Order Details actions", () => {
     });
 
     it("should dispatch to ORDER_ITEMS_FETCH", () => {
-        const items = [order];
+        const items = orders;
         const expectedActions = [
             { type: actionsTypes.ORDER_ITEMS_FETCH, items },
         ];
