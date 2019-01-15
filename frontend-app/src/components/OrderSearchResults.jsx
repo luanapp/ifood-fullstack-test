@@ -5,7 +5,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { connect } from "react-redux";
-import * as moment from "moment";
+import moment from "moment";
 import * as actions from "../actions/orderDetails";
 
 export class OrderSearchResults extends React.Component {
@@ -53,7 +53,7 @@ export class OrderSearchResults extends React.Component {
                             return acc + (qty * price);
                         }, 0.0);
                         return (
-                            <TableRow key={index} onClick={() => this.openDetailsDialog(index)} >
+                            <TableRow className="row" key={index} onClick={() => this.openDetailsDialog(index)} >
                                 <TableCell align="center" >{moment(row.createdAt).format('MM-DD-YYYY')}</TableCell>
                                 <TableCell align="center">{row.name}</TableCell>
                                 <TableCell align="center">{row.phone}</TableCell>

@@ -7,7 +7,7 @@ import { OrderSearch } from "../../src/components/OrderSearch.jsx";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Order Search component", () => {
-    let wrapper, instance;
+    let wrapper;
     const props = {
         fetchOrderDetails: jest.fn(),
     };
@@ -19,7 +19,10 @@ describe("Order Search component", () => {
             }
         }
         wrapper = shallow(<OrderSearch {...props} />);
-        //instance = wrapper.st
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it("should set the component initial state", () => {
