@@ -15,7 +15,7 @@ const order = {
     name,
     phone,
     email,
-    items: [item],
+    items: [item, item],
 };
 
 export const orders = [order];
