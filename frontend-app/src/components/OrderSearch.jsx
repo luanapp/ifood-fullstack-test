@@ -44,8 +44,8 @@ export class OrderSearch extends React.Component {
             <div className="order-search">
                 <div className="search-fields">
                     <Paper className="page">
-                        <TextField className="field" name="startDate" type="date" margin="dense" label="Start Date" value={startDate} onChange={this.onFieldChange.bind(this)} />
-                        <TextField className="field" name="endDate" type="date" margin="dense" label="End Date" value={endDate} onChange={this.onFieldChange.bind(this)} />
+                        <TextField className="field" name="startDate" type="date" margin="dense" label="Start Date" value={startDate} onChange={this.onFieldChange.bind(this)} InputLabelProps={{shrink: true,}} />
+                        <TextField className="field" name="endDate" type="date" margin="dense" label="End Date" value={endDate} onChange={this.onFieldChange.bind(this)} InputLabelProps={{shrink: true,}} />
                         <TextField className="field" name="name" type="text" margin="dense" label="Client Name" value={name} onChange={this.onFieldChange.bind(this)} />
                         <TextField className="field" name="phone" type="text" margin="dense" label="Phone" value={phone} onChange={this.onFieldChange.bind(this)} />
                         <TextField className="field" name="email" type="text" margin="dense" label="E-mail" value={email} onChange={this.onFieldChange.bind(this)} />
