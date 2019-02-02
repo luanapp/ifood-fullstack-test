@@ -22,7 +22,6 @@ import com.ifood.demo.order.client.ClientClient;
 import com.ifood.demo.order.document.Order;
 import com.ifood.demo.order.dto.Client;
 import com.ifood.demo.order.dto.OrderDetails;
-import com.ifood.demo.order.exception.ClientNotFoundException;
 import com.ifood.demo.order.exception.ServiceException;
 import com.ifood.demo.order.repository.OrderRepository;
 import org.junit.Assert;
@@ -36,7 +35,6 @@ import org.springframework.hateoas.Resources;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderDetailsServiceTest {
@@ -62,25 +60,6 @@ public class OrderDetailsServiceTest {
 
     Assert.assertEquals(2, orderDetails.size());
     checkOrderDetails(orderDetails);
-
-    verify(clientClient).findAllFiltered(anyString(), anyString(), anyString());
-    verify(resource).getContent();
-    verify(orderRepository).findByCreatedAtBetween(any(Date.class), any(Date.class));
-  }
-
-  @Test(expected = ClientNotFoundException.class)
-  public void getOrderDetails_ClientNotFound() throws ServiceException {
-    List<Client> clients = getClientsMock();
-    clients.get(0).setId(UUID.randomUUID());
-
-    List<Order> orders = getOrdersMock();
-
-    when(clientClient.findAllFiltered(anyString(), anyString(), anyString())).thenReturn(resource);
-    when(resource.getContent()).thenReturn(clients);
-    when(orderRepository.findByCreatedAtBetween(any(Date.class), any(Date.class))).thenReturn(
-        orders);
-
-    service.getOrderDetails(ORDER1_CREATED_STR, ORDER2_CREATED_STR, "Name", "phone", "email");
 
     verify(clientClient).findAllFiltered(anyString(), anyString(), anyString());
     verify(resource).getContent();
