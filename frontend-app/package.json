@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.7.1",
+    "dotenv-webpack": "^1.7.0",
+    "kleur": "^3.0.1",
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
@@ -11,7 +13,8 @@
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "terser": "^3.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -32,6 +35,7 @@
     "jest": "^23.6.0",
     "redux-mock-store": "^1.5.3",
     "sass-loader": "^7.1.0",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.1",
@@ -42,7 +46,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "start": "webpack-dev-server --progress --colors --hot --inline --https --config ./webpack/webpack.config.dev.js",
-    "build": "./node_modules/webpack/bin/webpack.js -p --config ./webpack/webpack.config.prod.js"
+    "build": "node ./node_modules/webpack/bin/webpack.js -p --config ./webpack/webpack.config.prod.js"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     mode: 'development',
@@ -32,6 +33,11 @@ module.exports = {
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 use: { loader: 'url?limit=10000&mimetype=image/svg+xml' }
+            },
+            {
+                test: /\.js$/,
+                use: ["source-map-loader"],
+                enforce: "pre"
             }
         ]
     },
@@ -51,7 +57,10 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: './public/manifest.json',
             to: './public'
-        }])
+        }]),
+        new Dotenv({
+            path: '.env'
+        })
     ],
     devServer: {
         open: true,

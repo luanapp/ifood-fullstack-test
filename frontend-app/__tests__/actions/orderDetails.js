@@ -25,7 +25,7 @@ describe("Test Order Details actions", () => {
             { type: actionsTypes.ORDER_DETAILS_SUCCESS, orders: orders }
         ];
 
-        const url = buildUrl("/v1/orders/details", urls.API_GW_URL, searchParams);
+        const url = buildUrl("/api/v1/orders/details", urls.API_URL, searchParams);
         fetchMock.getOnce(url.toString(), orders);
 
         store.dispatch(actions.fetchOrderDetails(searchParams)).then(() => {
@@ -38,7 +38,7 @@ describe("Test Order Details actions", () => {
             { type: actionsTypes.ORDER_DETAILS_ERROR, error }
         ];
 
-        const url = buildUrl("/v1/orders/details", urls.API_GW_URL, searchParams);
+        const url = buildUrl("/api/v1/orders/details", urls.API_URL, searchParams);
         fetchMock.getOnce(url.toString(), () => {
             throw error;
         });

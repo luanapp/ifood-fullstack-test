@@ -11,7 +11,7 @@ export const receiveOrderDetails = (data) => {
 
 export const fetchOrderDetails = (searchParams) => {
     return dispatch => {
-        const url = buildUrl("/v1/orders/details", urls.API_GW_URL, searchParams);
+        const url = buildUrl("/api/v1/orders/details", urls.API_URL , searchParams);
         return fetch(url, {
             method: "GET",
             mode: "cors",

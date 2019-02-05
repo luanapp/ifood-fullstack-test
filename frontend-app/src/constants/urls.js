@@ -1,1 +1,1 @@
-export const API_GW_URL = "http://localhost:8008";
+export const API_URL = `http://${process.env.IP_ADDR || "localhost"}`;

@@ -1,0 +1,43 @@
+version: "3.3"
+services:
+  service-discovery:
+    container_name: service-discovery
+    build:
+      context: ./service-discovery
+      dockerfile: Dockerfile
+    expose:
+      - 8671
+    networks:
+      - default
+    environment:
+      EUREKA_HOSTNAME: service-discovery
+
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    expose:
+      - 8008
+    networks:
+      - default
+    depends_on:
+      - service-discovery
+    environment:
+        EUREKA_URI: http://service-discovery:8761/eureka
+
+  frontend-app:
+    container_name: frontend-app
+    build:
+      context: ./frontend-app
+      dockerfile: Dockerfile
+    expose:
+      - 80
+    networks:
+      - default
+    depends_on:
+      - api-gateway
+
+networks:
+  default:
+    driver: bridge

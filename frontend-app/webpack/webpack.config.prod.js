@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     mode: 'production',
@@ -55,6 +56,9 @@ module.exports = {
         new CopyWebpackPlugin([{
             from: './public/manifest.json',
             to: './public'
-        }])
+        }]),
+        new Dotenv({
+            path: '.env'
+        })
     ]
 };
