@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'production',
@@ -57,8 +57,10 @@ module.exports = {
             from: './public/manifest.json',
             to: './public'
         }]),
-        new Dotenv({
-            path: '.env'
+        new webpack.DefinePlugin({
+            'process.env': {
+                'IP_ADDR': JSON.stringify(process.env.IP_ADDR) || 'localhost'
+            }
         })
     ]
 };

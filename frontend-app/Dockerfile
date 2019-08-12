@@ -4,18 +4,19 @@ FROM node:10.15-alpine as builder
 RUN mkdir /opt/ifood
 WORKDIR /opt/ifood
 
+# set api gateway address
+ARG IP_ADDR
+ENV IP_ADDR=${IP_ADDR}
+
 # add `node_modules/.bin` to $PATH
 ENV PATH /opt/ifood/node_modules/.bin:$PATH
 
-## TODO how to do this in the nginx container?
-COPY ./nginx/create-env.sh .
-RUN sh create-env.sh .
-
 # copy files to build the project
 COPY . .
-
+RUN npm i --silent -g webpack
+RUN npm i --silent -g cross-env
 RUN npm i --silent
-RUN npm run build
+RUN IP_ADDR="${IP_ADDR}" && npm run build
 
 FROM nginx:1.15.8-alpine
 

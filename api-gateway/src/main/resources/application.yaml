@@ -9,21 +9,22 @@ spring:
       discovery:
         locator:
           enabled: true
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
       routes:
       - id: client-service
         uri: lb://client-service
         predicates:
         - Path=/v1/clients/**
+
       - id: order-service
         uri: lb://order-service
         predicates:
         - Path=/v1/orders/**
-        globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-            - GET
 
 eureka:
   client:

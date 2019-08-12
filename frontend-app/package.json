@@ -46,7 +46,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "start": "webpack-dev-server --progress --colors --hot --inline --https --config ./webpack/webpack.config.dev.js",
-    "build": "node ./node_modules/webpack/bin/webpack.js -p --config ./webpack/webpack.config.prod.js"
+    "build": "cross-env IP_ADDR=\"$IP_ADDR\" webpack -p --config ./webpack/webpack.config.prod.js"
   },
   "eslintConfig": {
     "extends": "react-app"

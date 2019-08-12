@@ -8,7 +8,7 @@ services:
     expose:
       - 8671
     networks:
-      - default
+      - backend
     environment:
       EUREKA_HOSTNAME: service-discovery
 
@@ -20,24 +20,61 @@ services:
     expose:
       - 8008
     networks:
-      - default
+      - backend
+      - frontend
     depends_on:
       - service-discovery
     environment:
         EUREKA_URI: http://service-discovery:8761/eureka
+
+  client-service:
+    container_name: client-service
+    build:
+      context: ./client-service
+      dockerfile: Dockerfile
+    expose:
+      - 8081
+    networks:
+      - backend
+    depends_on:
+      - api-gateway
+    environment:
+      EUREKA_URI: http://service-discovery:8761/eureka
+
+  order-service:
+    container_name: order-service
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    expose:
+      - 8082
+    networks:
+      - backend
+    depends_on:
+      - api-gateway
+    environment:
+      EUREKA_URI: http://service-discovery:8761/eureka
 
   frontend-app:
     container_name: frontend-app
     build:
       context: ./frontend-app
       dockerfile: Dockerfile
+      args:
+        - IP_ADDR=10.6.0.99
     expose:
       - 80
     networks:
-      - default
+      frontend:
+        ipv4_address: 10.6.0.99
     depends_on:
       - api-gateway
 
 networks:
-  default:
+  backend:
     driver: bridge
+  frontend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.6.0.0/16

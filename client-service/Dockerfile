@@ -1,5 +1,5 @@
 # container to run the app
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8
 
 # default environment variables
 ARG PORT=8083

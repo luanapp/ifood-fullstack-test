@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(serviceId = "client-service", url = "http://localhost:8081/v1/clients")
+@FeignClient(serviceId = "client-service", url = "http://client-service:8081/v1/clients")
 public interface ClientClient {
 
   @GetMapping(path = "/")
