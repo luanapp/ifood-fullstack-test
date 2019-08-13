@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.ifood.demo.client.ClientEventHandler;
 
+
 @SpringBootApplication
 @EnableJpaRepositories("com.ifood.demo")
 public class ClientApplication {
@@ -16,7 +17,7 @@ public class ClientApplication {
 	}
 	
     @Bean
-    ClientEventHandler clientEventHandler() {
+    ClientEventHandler ClientEventHandler() {
         return new ClientEventHandler();
     }
 }

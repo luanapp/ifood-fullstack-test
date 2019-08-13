@@ -19,7 +19,23 @@ public class Client {
 	private final String email;
 	private final String phone;
 
-	protected Client() {
-		this(null, null, null);
+	
+	public String getName() {
+		return name;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	protected Client() {
+		this.name = null;
+		this.email = null;
+		this.phone = null;
+	}
+	
 }
