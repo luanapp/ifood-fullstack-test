@@ -1,9 +1,10 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
-import { connect } from "react-redux";
 import * as actions from "../actions/orderDetails";
+
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import { connect } from "react-redux";
 
 export class OrderSearch extends React.Component {
 
@@ -12,7 +13,7 @@ export class OrderSearch extends React.Component {
         this.state = {
             startDate: "",
             endDate: "",
-            name: "",
+            clientName: "",
             phone: "",
             email: "",
         };
@@ -20,11 +21,11 @@ export class OrderSearch extends React.Component {
 
     search() {
         const { fetchOrderDetails } = this.props;
-        const { startDate, endDate, name, phone, email } = this.state;
-        let searchParams = {
-            startDate: (new Date(startDate)).toISOString(),
-            endDate: (new Date(endDate)).toISOString(),
-            name,
+        const { startDate, endDate, clientName, phone, email } = this.state;
+        const searchParams = {
+            startDate: startDate ? (new Date(startDate)).toISOString() : '',
+            endDate: endDate ? (new Date(endDate)).toISOString() : '',
+            clientName,
             phone,
             email,
         };
@@ -39,14 +40,14 @@ export class OrderSearch extends React.Component {
     }
 
     render() {
-        const { startDate, endDate, name, phone, email } = this.state;
+        const { startDate, endDate, clientName, phone, email } = this.state;
         return (
             <div className="order-search">
                 <div className="search-fields">
                     <Paper className="page">
                         <TextField className="field" name="startDate" type="date" margin="dense" label="Start Date" value={startDate} onChange={this.onFieldChange.bind(this)} InputLabelProps={{shrink: true,}} />
                         <TextField className="field" name="endDate" type="date" margin="dense" label="End Date" value={endDate} onChange={this.onFieldChange.bind(this)} InputLabelProps={{shrink: true,}} />
-                        <TextField className="field" name="name" type="text" margin="dense" label="Client Name" value={name} onChange={this.onFieldChange.bind(this)} />
+                        <TextField className="field" name="clientName" type="text" margin="dense" label="Client name" value={clientName} onChange={this.onFieldChange.bind(this)} />
                         <TextField className="field" name="phone" type="text" margin="dense" label="Phone" value={phone} onChange={this.onFieldChange.bind(this)} />
                         <TextField className="field" name="email" type="text" margin="dense" label="E-mail" value={email} onChange={this.onFieldChange.bind(this)} />
                     </Paper>

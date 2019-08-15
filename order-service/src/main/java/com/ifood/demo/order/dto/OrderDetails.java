@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -14,13 +14,13 @@ import java.util.List;
 @Builder
 @RequiredArgsConstructor
 public class OrderDetails {
-  private final Date createdAt;
-  private final String name;
-  private final String email;
-  private final String phone;
-  private final List<Order.Item> items;
+    private final LocalDateTime createdAt;
+    private final String name;
+    private final String email;
+    private final String phone;
+    private final List<Order.Item> items;
 
-  protected OrderDetails() {
-    this(null, null, null, null, null);
-  }
+    protected OrderDetails() {
+        this(null, null, null, null, null);
+    }
 }

@@ -10,9 +10,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = ServiceDiscoveryApplication.class)
 public class ServiceDiscoveryApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }
 

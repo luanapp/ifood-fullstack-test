@@ -10,9 +10,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = ApiGatewayApplication.class)
 public class ApiGatewayApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }
 

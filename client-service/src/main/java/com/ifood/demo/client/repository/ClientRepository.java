@@ -17,15 +17,15 @@ import java.util.UUID;
 
 
 public interface ClientRepository
-    extends CrudRepository<Client, UUID>, QuerydslPredicateExecutor<Client>,
-    QuerydslBinderCustomizer<QClient> {
+        extends CrudRepository<Client, UUID>, QuerydslPredicateExecutor<Client>,
+        QuerydslBinderCustomizer<QClient> {
 
-  @RestResource(path = "byName")
-  Collection<Client> findByNameIgnoreCaseContaining(@Param("name") String name);
+    @RestResource(path = "byName")
+    Collection<Client> findByNameIgnoreCaseContaining(@Param("name") String name);
 
-  @Override
-  default public void customize(QuerydslBindings bindings, QClient client) {
-    bindings.bind(String.class).first((SingleValueBinding<StringPath, String>) StringExpression::containsIgnoreCase);
-  }
+    @Override
+    default public void customize(QuerydslBindings bindings, QClient client) {
+        bindings.bind(String.class).first((SingleValueBinding<StringPath, String>) StringExpression::containsIgnoreCase);
+    }
 
 }

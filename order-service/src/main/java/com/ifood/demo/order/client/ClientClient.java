@@ -7,11 +7,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collections;
+
 @Component
-@FeignClient(serviceId = "client-service", url = "http://client-service:8081/v1/clients")
+@FeignClient(serviceId = "client-service", url = "${feign.client-service.url:http://localhost:8081}")
 public interface ClientClient {
 
-  @GetMapping(path = "/")
-  Resources<Client> findAllFiltered(@RequestParam("name") String name,
-      @RequestParam("email") String email, @RequestParam("phone") String phone);
+    @GetMapping(path = "/v1/clients")
+    Resources<Client> findAllFiltered(@RequestParam("name") String name,
+                                      @RequestParam("email") String email,
+                                      @RequestParam("phone") String phone);
+
+    class ClientClientFallback implements ClientClient {
+        @Override
+        public Resources<Client> findAllFiltered(String name, String email, String phone) {
+            return new Resources<>(Collections.emptyList());
+        }
+    }
 }

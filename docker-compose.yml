@@ -25,7 +25,7 @@ services:
     depends_on:
       - service-discovery
     environment:
-        EUREKA_URI: http://service-discovery:8761/eureka
+      EUREKA_URI: http://service-discovery:8761/eureka
 
   client-service:
     container_name: client-service
@@ -54,6 +54,7 @@ services:
       - api-gateway
     environment:
       EUREKA_URI: http://service-discovery:8761/eureka
+      FEIGN_CLIENT-SERVICE_URL: http://client-service:8081
 
   frontend-app:
     container_name: frontend-app

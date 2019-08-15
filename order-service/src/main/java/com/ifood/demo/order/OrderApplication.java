@@ -16,12 +16,12 @@ import org.springframework.hateoas.config.EnableHypermediaSupport;
 @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
 public class OrderApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(OrderApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(OrderApplication.class, args);
+    }
 
-  @Bean
-  OrderEventHandler orderEventHandler() {
-    return new OrderEventHandler();
-  }
+    @Bean
+    OrderEventHandler orderEventHandler() {
+        return new OrderEventHandler();
+    }
 }

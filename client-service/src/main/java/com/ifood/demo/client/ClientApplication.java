@@ -15,12 +15,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Import({QuerydslConfig.class})
 public class ClientApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(ClientApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(ClientApplication.class, args);
+    }
 
-  @Bean
-  ClientEventHandler clientEventHandler() {
-    return new ClientEventHandler();
-  }
+    @Bean
+    ClientEventHandler clientEventHandler() {
+        return new ClientEventHandler();
+    }
 }
