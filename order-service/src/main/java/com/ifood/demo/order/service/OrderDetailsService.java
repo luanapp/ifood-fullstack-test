@@ -19,21 +19,25 @@ import java.util.Optional;
 @Service
 public class OrderDetailsService {
 
-    @Autowired
     private ClientClient clientClient;
-    @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    public OrderDetailsService(OrderRepository orderRepository, ClientClient clientClient) {
+        this.orderRepository = orderRepository;
+        this.clientClient = clientClient;
+    }
 
     /**
      * Retrieve the order details that matches the search criteria given by the parameters
      *
      * @param searchParams search params, containing:<br/>
      *                     <ul>
-     *                     <li> order creation date must be after this date </li>
-     *                     <li> order creation date must be before this date </li>
-     *                     <li> client name to filter </li>
-     *                     <li> client phone to filter </li>
-     *                     <li> client email to filter </li>
+     *                      <li> order creation date must be after this date </li>
+     *                      <li> order creation date must be before this date </li>
+     *                      <li> client name to filter </li>
+     *                      <li> client phone to filter </li>
+     *                      <li> client email to filter </li>
      *                     </ul>
      * @return order details list matching the criteria
      */

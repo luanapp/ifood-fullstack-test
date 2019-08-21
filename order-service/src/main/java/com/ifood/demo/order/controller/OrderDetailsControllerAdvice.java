@@ -29,11 +29,7 @@ public class OrderDetailsControllerAdvice {
     }
 
     private <E extends Exception> ResponseEntity<VndErrors> error(final E exception, final HttpStatus httpStatus, final String logRef) {
-
-        final String message =
-                Optional.of(exception.getMessage())
-                        .orElse(exception.getClass().getSimpleName());
-
+        final String message = Optional.of(exception.getMessage()).orElse(exception.getClass().getSimpleName());
         return new ResponseEntity<>(new VndErrors(logRef, message), httpStatus);
     }
 }
