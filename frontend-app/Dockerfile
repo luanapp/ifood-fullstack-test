@@ -1,4 +1,4 @@
-FROM node:10.15-alpine as builder
+FROM node:10.15 as builder
 
 # set working directory
 RUN mkdir /opt/ifood

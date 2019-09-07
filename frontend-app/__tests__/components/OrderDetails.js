@@ -1,21 +1,22 @@
-import React from "react";
 import Enzyme, { shallow } from "enzyme";
+
 import Adapter from "enzyme-adapter-react-16";
-import { OrderDetails } from "../../src/components/OrderDetails.jsx";
-import OrderSearch from "../../src/components/OrderSearch.jsx"
-import OrderSearchResults from "../../src/components/OrderSearchResults.jsx"
-import OrderItemsModal from "../../src/components/OrderItemsModal.jsx"
+import { OrderDetails } from "../../src/components/OrderDetails";
+import OrderItemsModal from "../../src/components/OrderItemsModal"
+import OrderSearch from "../../src/components/OrderSearch"
+import OrderSearchResults from "../../src/components/OrderSearchResults"
+import React from "react";
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Order Details component", () => {
     let wrapper;
+    const props = {
+        orders: [{}]
+    };
 
     beforeEach(() => {
-        wrapper = shallow(<OrderDetails />);
-        wrapper.setProps({
-            orders: [{}]
-        });
+        wrapper = shallow(<OrderDetails {...props} />);
     });
 
     it("should load components", () => {

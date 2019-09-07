@@ -1,17 +1,17 @@
-import React from "react";
 import Enzyme, { shallow } from "enzyme";
+
 import Adapter from "enzyme-adapter-react-16";
-import { OrderSearchResults } from "../../src/components/OrderSearchResults.jsx";
-import { orders } from "../../__mocks__/objectMocks";
+import { OrderItemsModal } from "../../src/components/OrderItemsModal";
+import React from "react";
+import { items } from "../../__mocks__/objectMocks";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("Order Search results component", () => {
+describe("Order Items Modal component", () => {
     let wrapper;
-    const newOrders = [orders[0], orders[0], orders[0]];
+    const newItems = [items[0], items[0], items[0]];
     const props = {
         toggleItemsModal: jest.fn(),
-        fetchOrderItems: jest.fn(),
     };
 
     beforeEach(() => {
@@ -20,7 +20,7 @@ describe("Order Search results component", () => {
                 spyOn(props, key).and.callThrough();
             }
         }
-        wrapper = shallow(<OrderSearchResults {...props} />);
+        wrapper = shallow(<OrderItemsModal {...props} />);
     });
 
     afterEach(() => {
@@ -28,33 +28,35 @@ describe("Order Search results component", () => {
     });
 
     it("should set the component initial state", () => {
+        expect(wrapper.prop("open")).not.toBeDefined();
         expect(wrapper.state()).toEqual({
-            orders: [],
+            items: []
         });
     });
 
     it("new props are saved to the state", () => {
         wrapper.setProps({
-            orders
+            items
         });
         expect(wrapper.state()).toEqual({
-            orders
+            items
         });
     });
 
-    it("should render table with all orders", () => {
+    it("should render table with all orders items", () => {
         wrapper.setProps({
-            orders: newOrders
+            open: true,
+            items: newItems
         });
-        expect(wrapper.find(".row")).toHaveLength(newOrders.length);
+        expect(wrapper.find(".row")).toHaveLength(newItems.length);
     });
 
-    it("should call to open items modal", () => {
+    it("should close the modal after clicking outside modal", () => {
         wrapper.setProps({
-            orders: newOrders
+            items,
+            open: true
         });
-        wrapper.find(".row").at(1).simulate("click");
-        expect(props.toggleItemsModal).toBeCalled();
-        expect(props.fetchOrderItems).toBeCalledWith(newOrders[1].items);
+        wrapper.find(".items-dialog").simulate("close");
+        expect(props.toggleItemsModal).toHaveBeenCalled();
     });
 });
