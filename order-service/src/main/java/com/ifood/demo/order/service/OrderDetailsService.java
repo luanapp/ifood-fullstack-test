@@ -51,6 +51,8 @@ public class OrderDetailsService {
 
         Collection<Order> orders =
                 orderRepository.findByCreatedAtBetween(searchParams.getStartDate(), searchParams.getEndDate());
+
+
         for (Order order : orders) {
             Optional<Client> client = clients.stream()
                     .filter(cli -> cli.getId().equals(order.getClientId()))

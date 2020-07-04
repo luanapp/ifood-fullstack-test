@@ -14,3 +14,17 @@ eureka:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:
     prefer-ip-address: true
+aws:
+  sns:
+    client:
+      topic:
+        url: arn:aws:sns:us-east-1:010860251628:IFOOD_CLIENT_CHANGED
+cloud:
+  aws:
+    credentials:
+      access-key: 
+      secret-key: 
+    region:
+      static: us-east-1
+    stack:
+      auto: false
