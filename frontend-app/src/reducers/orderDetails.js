@@ -11,7 +11,7 @@ const initialState = {
     open: false
 };
 
-export default (state = initialState, action) => {
+const orderDetails = (state = initialState, action) => {
     let newState = {};
 
     switch (action.type) {
@@ -39,3 +39,5 @@ export default (state = initialState, action) => {
             return state;
     }
 }
+
+export default orderDetails
